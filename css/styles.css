@@ -45,6 +45,7 @@ h1, h2 {
   width: 100%;
   height: 2.5rem;
   margin-top: 0.5rem;
+  border: 1px solid black;
 }
 
 .profile-input {
@@ -60,8 +61,11 @@ h1, h2 {
   width: 100%;
   height: 6rem;
   margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid black;
   font-size: 18px;
   font-family: 'Nunito', sans-serif;
+  resize: none;
 }
 
 .save-button {
@@ -71,6 +75,8 @@ h1, h2 {
   height: 2rem;
   font-size: 18px;
   font-family: 'Nunito', sans-serif;
+  box-shadow: 3px 3px 2px black;
+  border: 1px solid black;
 }
 
 @media screen and (min-width: 768px) {
