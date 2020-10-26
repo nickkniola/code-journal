@@ -23,12 +23,57 @@
         </div>
       </div>
     </div>
-
-
-
   </header>
   <main>
-    <div data-view="edit-profile"></div>
+    <div data-view="edit-profile">
+      <div class="container">
+        <form>
+          <div class="row edit-profile-header-row">
+            <div class="column-full">
+              <h2 class="edit-profile-header">Edit Profile</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-half img-col">
+              <img src="images/placeholder-image-square.jpg" alt="placeholder image" class="placeholder-image">
+            </div>
+            <div class="column-half profile-form">
+              <div class="profile-form-input">
+                <label>Avatar URL</label>
+                <br/>
+                <input class="profile-input">
+              </div>
+              <div class="profile-form-input">
+                <label>Username</label>
+                <br/>
+                <input class="profile-input">
+              </div>
+              <div class="profile-form-input">
+                <label>Full Name</label>
+                <br/>
+                <input class="profile-input">
+              </div>
+              <div class="profile-form-input">
+                <label>Location</label>
+                <br/>
+                <input class="profile-input">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <div class="profile-bio-section">
+                <label>Bio</label>
+                <br/>
+                <textarea class="bio-text-area"></textarea>
+                <br/>
+                <button type="submit" class="save-button">SAVE</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

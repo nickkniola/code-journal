@@ -8,3 +8,65 @@ h1 {
   color: white;
   margin: 0;
 }
+
+.edit-profile-header-row {
+  margin: 1.5rem 0 1rem 0;
+}
+
+.edit-profile-header {
+  font-size: 28px;
+  margin: 0;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-form-input {
+  margin-top: 1rem;
+}
+
+.profile-form-input input {
+  width: 100%;
+  height: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.profile-bio-section {
+  margin-top: 1rem;
+}
+
+.bio-text-area {
+  width: 100%;
+  height: 6rem;
+  margin-top: 0.5rem;
+}
+
+.save-button {
+  float: right;
+  margin: 0.5rem 0 1rem 0;
+  width: 5rem;
+  height: 2rem;
+  font-size: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .profile-form-input {
+    margin-top: 0rem;
+  }
+
+  .profile-form-input input {
+    margin-top: 0.8rem;
+  }
+
+  .profile-bio-section {
+    margin-top: 3rem;
+  }
+}
