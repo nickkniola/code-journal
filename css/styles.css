@@ -32,6 +32,7 @@ h1, h2 {
   object-fit: cover;
   object-position: 50% 50%;
   border: 1px solid black;
+  min-height: 400px;
 }
 
 .profile-form {
