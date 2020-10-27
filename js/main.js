@@ -8,7 +8,7 @@ avatarInput.addEventListener('input', function () {
 var profileForm = document.querySelector('.edit-profile-form');
 
 profileForm.addEventListener('submit', function (event) {
-  event.preventDefault
+  event.preventDefault();
 
   data.profile.avatarUrl = profileForm.elements.avatarUrl.value;
   data.profile.username = profileForm.elements.username.value;
@@ -18,4 +18,15 @@ profileForm.addEventListener('submit', function (event) {
 
   profileForm.reset();
   avatarImage.setAttribute('src', 'images/placeholder-image-square.jpg');
-})
+});
+
+var previousProfileData = localStorage.getItem('profileData');
+
+if (previousProfileData) {
+  data = JSON.parse(previousProfileData)
+}
+
+window.addEventListener('beforeunload', function () {
+  var dataString = JSON.stringify(data);
+  localStorage.setItem('profileData', dataString);
+});
