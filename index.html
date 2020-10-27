@@ -27,7 +27,7 @@
   <main>
     <div data-view="edit-profile">
       <div class="container">
-        <form class="edit-profile-form">
+        <form class="edit-profile-form" id="edit-profile-form">
           <div class="row edit-profile-header-row">
             <div class="column-full">
               <h2 class="edit-profile-header">Edit Profile</h2>
@@ -39,35 +39,35 @@
             </div>
             <div class="column-half profile-form">
               <div class="profile-form-input">
-                <label>Avatar URL</label>
+                <label for="avatar-url">Avatar URL</label>
                 <br/>
-                <input type="url" class="profile-input avatar-input" name="avatarUrl" required>
+                <input type="url" class="profile-input avatar-input" id="avatar-url" name="avatarUrl" required>
               </div>
               <div class="profile-form-input">
-                <label>Username</label>
+                <label for="username">Username</label>
                 <br/>
-                <input type="text" class="profile-input" name="username" required>
+                <input type="text" class="profile-input" id="username" name="username" required>
               </div>
               <div class="profile-form-input">
-                <label>Full Name</label>
+                <label for="fullName">Full Name</label>
                 <br/>
-                <input type="text" class="profile-input" name="fullName" required>
+                <input type="text" class="profile-input" id="fullName" name="fullName" required>
               </div>
               <div class="profile-form-input">
-                <label>Location</label>
+                <label for="location">Location</label>
                 <br/>
-                <input type="text" class="profile-input" name="location" required>
+                <input type="text" class="profile-input" id="location" name="location" required>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="column-full">
               <div class="profile-bio-section">
-                <label>Bio</label>
+                <label for="bio">Bio</label>
                 <br/>
-                <textarea class="bio-text-area" name="bio" required></textarea>
+                <textarea class="bio-text-area" nid="bio" ame="bio" required></textarea>
                 <br/>
-                <button type="submit" class="save-button">SAVE</button>
+                <button type="submit" class="save-button" form="edit-profile-form" value="save">SAVE</button>
               </div>
             </div>
           </div>
