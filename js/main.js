@@ -17,6 +17,5 @@ profileForm.addEventListener('submit', function (event) {
   data.profile.bio = profileForm.elements.bio.value;
 
   profileForm.reset();
-
-
+  avatarImage.setAttribute('src', 'images/placeholder-image-square.jpg');
 })
