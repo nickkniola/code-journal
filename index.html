@@ -12,12 +12,70 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
+    <div class="container">
+      <div class="row">
+        <div class="column-full">
+          <h1>Code Journal</h1>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
-    <div data-view="edit-profile"></div>
+    <div data-view="edit-profile">
+      <div class="container">
+        <form class="edit-profile-form" id="edit-profile-form">
+          <div class="row edit-profile-header-row">
+            <div class="column-full">
+              <h2 class="edit-profile-header">Edit Profile</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-half img-col">
+              <div class="image-placeholder-div">
+                <img src="images/placeholder-image-square.jpg" alt="placeholder image" class="placeholder-image">
+              </div>
+            </div>
+            <div class="column-half profile-form">
+              <div class="profile-form-input">
+                <label for="avatar-url">Avatar URL</label>
+                <br/>
+                <input type="url" class="profile-input avatar-input" id="avatar-url" name="avatarUrl" required>
+              </div>
+              <div class="profile-form-input">
+                <label for="username">Username</label>
+                <br/>
+                <input type="text" class="profile-input" id="username" name="username" required>
+              </div>
+              <div class="profile-form-input">
+                <label for="fullName">Full Name</label>
+                <br/>
+                <input type="text" class="profile-input" id="fullName" name="fullName" required>
+              </div>
+              <div class="profile-form-input">
+                <label for="location">Location</label>
+                <br/>
+                <input type="text" class="profile-input" id="location" name="location" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <div class="profile-bio-section">
+                <label for="bio">Bio</label>
+                <br/>
+                <textarea class="bio-text-area" id="bio" name="bio" required></textarea>
+                <br/>
+                <button type="submit" class="save-button" form="edit-profile-form" value="save">SAVE</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
