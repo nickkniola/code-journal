@@ -32,7 +32,6 @@ h1, h2 {
   object-fit: cover;
   object-position: 50% 50%;
   border: 1px solid black;
-  min-height: 400px;
 }
 
 .profile-form {
@@ -84,6 +83,10 @@ h1, h2 {
 }
 
 @media screen and (min-width: 768px) {
+  .placeholder-image {
+    min-height: 400px;
+  }
+
   .profile-form {
     min-height: 406px;
   }
