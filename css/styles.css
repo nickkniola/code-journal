@@ -9,12 +9,24 @@ h1 {
   margin: 0;
 }
 
-h1, h2 {
+h1, h2, h4 {
   font-family: 'Roboto', sans-serif;
 }
 
-.profile-form, .profile-bio-section {
+.profile-form, .profile-bio-section, .view-profile-bio {
   font-family: 'Nunito', sans-serif;
+}
+
+.view-name-title {
+  font-size: 28px;
+}
+
+.view-profile-bio {
+  font-size: 18px;
+}
+
+.view-user-id, .view-location {
+  font-size: 20px;
 }
 
 .edit-profile-header-row {
@@ -80,6 +92,14 @@ h1, h2 {
   font-family: 'Nunito', sans-serif;
   box-shadow: 3px 3px 2px black;
   border: 1px solid black;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border: 1px black solid;
 }
 
 @media screen and (min-width: 768px) {
