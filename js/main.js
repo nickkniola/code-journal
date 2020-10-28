@@ -112,11 +112,8 @@ function viewSwapper(view) {
 
 document.addEventListener('DOMContentLoaded', function () {
   if (data.profile.username) {
-    profileDiv.setAttribute('class', 'display-block');
-    editProfileDiv.setAttribute('class', 'display-none');
-    profileDiv.appendChild(renderProfile(data));
+    viewSwapper('profile');
   } else {
-    editProfileDiv.setAttribute('class', 'display-block');
-    profileDiv.setAttribute('class', 'display-none');
+    viewSwapper('edit-profile');
   }
 })
