@@ -97,9 +97,10 @@ function renderProfile(data) {
   return containerDiv;
 }
 
-var editProfileDiv = document.querySelector('div[data-view = "edit-profile"]');
-var profileDiv = document.querySelector('div[data-view = "profile"]');
-var entriesDiv = document.querySelector('div[data-view = "entries"]');
+var editProfileDiv = document.querySelector('div[data-view="edit-profile"]');
+var profileDiv = document.querySelector('div[data-view="profile"]');
+var entriesDiv = document.querySelector('div[data-view="entries"]');
+var createEntryDiv = document.querySelector('div[data-view="create-entry"]')
 
 function viewSwapper(view) {
   if (view === 'profile') {
@@ -110,12 +111,14 @@ function viewSwapper(view) {
     profileDiv.setAttribute('class', 'display-block');
     editProfileDiv.setAttribute('class', 'display-none');
     entriesDiv.setAttribute('class', 'display-none');
+    createEntryDiv.setAttribute('class', 'display-none');
     data.view = 'profile';
     profileDiv.appendChild(renderProfile(data));
   } else if (view === 'edit-profile') {
     editProfileDiv.setAttribute('class', 'display-block');
     entriesDiv.setAttribute('class', 'display-none');
     profileDiv.setAttribute('class', 'display-none');
+    createEntryDiv.setAttribute('class', 'display-none');
     data.view = 'edit-profile';
     if (data.profile.avatarUrl) {
       prepopulateForm();
@@ -124,7 +127,14 @@ function viewSwapper(view) {
     entriesDiv.setAttribute('class', 'display-block');
     editProfileDiv.setAttribute('class', 'display-none');
     profileDiv.setAttribute('class', 'display-none');
+    createEntryDiv.setAttribute('class', 'display-none');
     data.view = 'entries';
+  } else if (view === 'create-entry') {
+    createEntryDiv.setAttribute('class', 'display-block');
+    entriesDiv.setAttribute('class', 'display-none');
+    editProfileDiv.setAttribute('class', 'display-none');
+    profileDiv.setAttribute('class', 'display-none');
+    data.view = 'create-entry';
   }
 }
 
@@ -149,13 +159,13 @@ document.addEventListener('click', function (event) {
   if (!event.target.matches('a')) {
     return;
   }
-  if (event.target.matches('a[data-view = "edit-profile"]')) {
+  if (event.target.matches('a[data-view="edit-profile"]')) {
     viewSwapper('edit-profile');
-  }
-  if (event.target.matches('a[data-view = "profile"]') && data.profile.username) {
+  } else if (event.target.matches('a[data-view="profile"]') && data.profile.username) {
     viewSwapper('profile');
-  }
-  if (event.target.matches('a[data-view = "entries"]') && data.profile.username) {
+  } else if (event.target.matches('a[data-view="entries"]') && data.profile.username) {
     viewSwapper('entries');
+  } else if (event.target.matches('a[data-view="create-entry"]') && data.profile.username) {
+    viewSwapper('create-entry');
   }
 })
