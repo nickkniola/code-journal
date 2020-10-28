@@ -144,11 +144,6 @@ a[data-view = "profile"] {
 }
 
 a[data-view = "profile"]:link {
-
-  color: white;
-}
-
-a[data-view = "profile"]:visited {
   color: white;
 }
 
