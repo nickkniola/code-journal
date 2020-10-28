@@ -95,14 +95,11 @@ var editProfileDiv = document.querySelector('div[data-view = "edit-profile"]');
 
 var profileDiv = document.querySelector('div[data-view = "profile"]');
 
-// var profileContainer = document.querySelector('div.profile-container');
-
 function viewSwapper(view) {
   if (view === 'profile') {
     editProfileDiv.setAttribute('class', 'display-none');
     profileDiv.setAttribute('class', 'display-block');
     data.view = 'profile';
-    // profileDiv.setAttribute('class', 'display-none');
     profileDiv.appendChild(renderProfile(data));
   } else if (view === 'edit-profile') {
     editProfileDiv.setAttribute('class', 'display-block');
@@ -115,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (data.profile.username) {
     profileDiv.setAttribute('class', 'display-block');
     editProfileDiv.setAttribute('class', 'display-none');
-    // profileDiv.setAttribute('class', 'empty-out');
     profileDiv.appendChild(renderProfile(data));
   } else {
     editProfileDiv.setAttribute('class', 'display-block');
