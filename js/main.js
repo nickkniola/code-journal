@@ -18,6 +18,7 @@ profileForm.addEventListener('submit', function (event) {
 
   profileForm.reset();
   avatarImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+  viewSwapper('profile');
 });
 
 var previousProfileData = localStorage.getItem('profileData');
@@ -30,3 +31,89 @@ window.addEventListener('beforeunload', function () {
   var dataString = JSON.stringify(data);
   localStorage.setItem('profileData', dataString);
 });
+
+function renderProfile(data) {
+  var containerDiv = document.createElement('div');
+  containerDiv.setAttribute('class', 'container');
+
+  var rowDiv = document.createElement('div');
+  rowDiv.setAttribute('class', 'row');
+  containerDiv.appendChild(rowDiv);
+
+  var columnFullDiv = document.createElement('div');
+  columnFullDiv.setAttribute('class', 'column-full');
+  rowDiv.appendChild(columnFullDiv);
+
+  var h2Element = document.createElement('h2');
+  h2Element.setAttribute('class', 'view-name-title');
+  h2Element.textContent = data.profile.fullName;
+  columnFullDiv.appendChild(h2Element);
+
+  var rowDiv2 = document.createElement('div');
+  rowDiv2.setAttribute('class', 'row user-view');
+  containerDiv.appendChild(rowDiv2);
+
+  var columnHalfDiv = document.createElement('div');
+  columnHalfDiv.setAttribute('class', 'column-half');
+  rowDiv2.appendChild(columnHalfDiv);
+
+  var imgElement = document.createElement('img');
+  imgElement.setAttribute('src', data.profile.avatarUrl);
+  imgElement.setAttribute('alt', 'user profile');
+  imgElement.setAttribute('class', 'profile-image');
+  columnHalfDiv.appendChild(imgElement);
+
+  var columnHalfDiv2 = document.createElement('div');
+  columnHalfDiv2.setAttribute('class', 'column-half');
+  rowDiv2.appendChild(columnHalfDiv2);
+
+  var h4Element = document.createElement('h4');
+  h4Element.setAttribute('class', 'view-user-id');
+  h4Element.textContent = ' ' + data.profile.username;
+  columnHalfDiv2.appendChild(h4Element);
+  var icon = document.createElement('i');
+  icon.setAttribute('class', 'fas fa-user');
+  h4Element.prepend(icon);
+
+
+  var h4Element2 = document.createElement('h4');
+  h4Element2.setAttribute('class', 'view-location');
+  h4Element2.textContent = ' ' + data.profile.location;
+  columnHalfDiv2.append(h4Element2);
+  var icon2 = document.createElement('i');
+  icon2.setAttribute('class', 'fas fa-map-marker-alt');
+  h4Element2.prepend(icon2);
+
+
+  var pElement = document.createElement('p');
+  pElement.setAttribute('class', 'view-profile-bio');
+  pElement.textContent = data.profile.bio;
+  columnHalfDiv2.append(pElement);
+
+  return containerDiv;
+}
+
+var editProfileDiv = document.querySelector('div[data-view = "edit-profile"]');
+
+var profileDiv = document.querySelector('div[data-view = "profile"]');
+
+function viewSwapper(view) {
+  if (view === 'profile') {
+    editProfileDiv.setAttribute('class', 'display-none');
+    profileDiv.setAttribute('class', 'display-block');
+    data.view = 'profile';
+    profileDiv.appendChild(renderProfile(data));
+  } else if (view === 'edit-profile') {
+    editProfileDiv.setAttribute('class', 'display-block');
+    profileDiv.setAttribute('class', 'display-none');
+    data.view = 'edit-profile';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (data.profile.username) {
+    viewSwapper('profile');
+  } else {
+    viewSwapper('edit-profile');
+  }
+})
