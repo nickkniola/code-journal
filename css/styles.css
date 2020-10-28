@@ -29,6 +29,14 @@ h1, h2, h4 {
   font-size: 20px;
 }
 
+.display-none {
+  display: none;
+}
+
+.display-block {
+  display: block;
+}
+
 .edit-profile-header-row {
   margin: 1.5rem 0 1rem 0;
 }
