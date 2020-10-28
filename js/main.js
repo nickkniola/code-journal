@@ -98,9 +98,8 @@ function renderProfile(data) {
 }
 
 var editProfileDiv = document.querySelector('div[data-view = "edit-profile"]');
-
 var profileDiv = document.querySelector('div[data-view = "profile"]');
-
+var entriesDiv = document.querySelector('div[data-view = "entries"]');
 
 function viewSwapper(view) {
   if (view === 'profile') {
@@ -108,17 +107,24 @@ function viewSwapper(view) {
     if (containerDiv) {
       containerDiv.remove();
     }
-    editProfileDiv.setAttribute('class', 'display-none');
     profileDiv.setAttribute('class', 'display-block');
+    editProfileDiv.setAttribute('class', 'display-none');
+    entriesDiv.setAttribute('class', 'display-none');
     data.view = 'profile';
     profileDiv.appendChild(renderProfile(data));
   } else if (view === 'edit-profile') {
     editProfileDiv.setAttribute('class', 'display-block');
+    entriesDiv.setAttribute('class', 'display-none');
     profileDiv.setAttribute('class', 'display-none');
     data.view = 'edit-profile';
     if (data.profile.avatarUrl) {
       prepopulateForm();
     }
+  } else if (view === 'entries') {
+    entriesDiv.setAttribute('class', 'display-block');
+    editProfileDiv.setAttribute('class', 'display-none');
+    profileDiv.setAttribute('class', 'display-none');
+    data.view = 'entries';
   }
 }
 
@@ -148,5 +154,8 @@ document.addEventListener('click', function (event) {
   }
   if (event.target.matches('a[data-view = "profile"]') && data.profile.username) {
     viewSwapper('profile');
+  }
+  if (event.target.matches('a[data-view = "entries"]') && data.profile.username) {
+    viewSwapper('entries');
   }
 })
