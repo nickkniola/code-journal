@@ -75,7 +75,6 @@ function renderProfile(data) {
   icon.setAttribute('class', 'fas fa-user');
   h4Element.prepend(icon);
 
-
   var h4Element2 = document.createElement('h4');
   h4Element2.setAttribute('class', 'view-location');
   h4Element2.textContent = ' ' + data.profile.location;
@@ -84,11 +83,16 @@ function renderProfile(data) {
   icon2.setAttribute('class', 'fas fa-map-marker-alt');
   h4Element2.prepend(icon2);
 
-
   var pElement = document.createElement('p');
   pElement.setAttribute('class', 'view-profile-bio');
   pElement.textContent = data.profile.bio;
-  columnHalfDiv2.append(pElement);
+  columnHalfDiv2.appendChild(pElement);
+
+  var aElement = document.createElement('a');
+  aElement.setAttribute('href', '#');
+  aElement.setAttribute('data-view', 'edit-profile');
+  aElement.textContent = 'EDIT PROFILE';
+  columnHalfDiv2.appendChild(aElement);
 
   return containerDiv;
 }
@@ -97,8 +101,13 @@ var editProfileDiv = document.querySelector('div[data-view = "edit-profile"]');
 
 var profileDiv = document.querySelector('div[data-view = "profile"]');
 
+
 function viewSwapper(view) {
   if (view === 'profile') {
+    var containerDiv = document.querySelector('div[data-view = "profile"] div.container');
+    if (containerDiv) {
+      containerDiv.remove();
+    }
     editProfileDiv.setAttribute('class', 'display-none');
     profileDiv.setAttribute('class', 'display-block');
     data.view = 'profile';
@@ -107,6 +116,9 @@ function viewSwapper(view) {
     editProfileDiv.setAttribute('class', 'display-block');
     profileDiv.setAttribute('class', 'display-none');
     data.view = 'edit-profile';
+    if (data.profile.avatarUrl) {
+      prepopulateForm();
+    }
   }
 }
 
@@ -115,5 +127,26 @@ document.addEventListener('DOMContentLoaded', function () {
     viewSwapper('profile');
   } else {
     viewSwapper('edit-profile');
+  }
+})
+
+function prepopulateForm() {
+  avatarImage.setAttribute('src', data.profile.avatarUrl);
+  profileForm.elements.avatarUrl.value = data.profile.avatarUrl;
+  profileForm.elements.username.value = data.profile.username;
+  profileForm.elements.fullName.value = data.profile.fullName;
+  profileForm.elements.location.value = data.profile.location;
+  profileForm.elements.bio.value = data.profile.bio;
+}
+
+document.addEventListener('click', function (event) {
+  if (!event.target.matches('a')) {
+    return;
+  }
+  if (event.target.matches('a[data-view = "edit-profile"]')) {
+    viewSwapper('edit-profile');
+  }
+  if (event.target.matches('a[data-view = "profile"]') && data.profile.username) {
+    viewSwapper('profile');
   }
 })
