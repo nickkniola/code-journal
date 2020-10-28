@@ -138,3 +138,12 @@ function prepopulateForm() {
   profileForm.elements.location.value = data.profile.location;
   profileForm.elements.bio.value = data.profile.bio;
 }
+
+document.addEventListener('click', function (event) {
+  if (!event.target.matches('a')) {
+    return;
+  }
+  if (event.target.matches('a[data-view = "edit-profile"]')) {
+    viewSwapper('edit-profile');
+  }
+})
