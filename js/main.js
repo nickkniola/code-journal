@@ -18,6 +18,7 @@ profileForm.addEventListener('submit', function (event) {
 
   profileForm.reset();
   avatarImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+  viewSwapper('profile');
 });
 
 var previousProfileData = localStorage.getItem('profileData');
@@ -101,7 +102,7 @@ function viewSwapper(view) {
     editProfileDiv.setAttribute('class', 'display-none');
     profileDiv.setAttribute('class', 'display-block');
     data.view = 'profile';
-    profileContainer.setAttribute('class', 'empty-out')
+    profileContainer.setAttribute('class', 'empty-out');
     profileDiv.appendChild(renderProfile(data));
   } else if (view === 'edit-profile') {
     editProfileDiv.setAttribute('class', 'display-block');
@@ -109,3 +110,15 @@ function viewSwapper(view) {
     data.view = 'edit-profile';
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (data.profile.username) {
+    profileDiv.setAttribute('class', 'display-block');
+    editProfileDiv.setAttribute('class', 'display-none');
+    profileContainer.setAttribute('class', 'empty-out');
+    profileDiv.appendChild(renderProfile(data));
+  } else {
+    editProfileDiv.setAttribute('class', 'display-block');
+    profileDiv.setAttribute('class', 'display-none');
+  }
+})
