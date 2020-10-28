@@ -99,11 +99,13 @@ var editProfileDiv = document.querySelector('div[data-view = "edit-profile"]');
 var profileDiv = document.querySelector('div[data-view = "profile"]');
 
 function viewSwapper() {
-  if (data.view === "edit-profile") {
-    editProfileDiv.setAttribute('class', 'display-block');
-    profileDiv.setAttribute('class', 'display-none');
-  } else {
+  if (data.profile.username) {
     editProfileDiv.setAttribute('class', 'display-none');
     profileDiv.setAttribute('class', 'display-block');
+    data.view = 'profile';
+  } else {
+    editProfileDiv.setAttribute('class', 'display-block');
+    profileDiv.setAttribute('class', 'display-none');
+    data.view = 'edit-profile';
   }
 }
