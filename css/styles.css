@@ -101,10 +101,14 @@ h1, h2, h4 {
   font-family: 'Nunito', sans-serif;
   box-shadow: 3px 3px 2px black;
   border: 1px solid black;
+  background-color: white;
 }
+
+
 
 div.user-view div:last-child {
   margin-bottom: 2rem;
+  height: 100%;
 }
 
 .profile-image {
@@ -115,6 +119,10 @@ div.user-view div:last-child {
   border: 1px black solid;
 }
 
+p.view-profile-bio {
+  margin-bottom: 1.5rem;
+}
+
 a[data-view = "edit-profile"]:link {
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
@@ -123,7 +131,6 @@ a[data-view = "edit-profile"]:link {
   border: solid 1px black;
   padding: 0.2rem 0.5rem;
   box-shadow: 3px 3px 2px black;
-  margin-bottom: 1rem;
 }
 
 a[data-view = "edit-profile"]:visited {
@@ -138,12 +145,17 @@ h1 {
 a[data-view = "profile"] {
   display: inline;
   margin-left: 1.5rem;
+  margin-top: 3rem;
   font-family: 'Nunito', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   text-decoration: none;
 }
 
 a[data-view = "profile"]:link {
+  color: white;
+}
+
+a[data-view = "profile"]:visited {
   color: white;
 }
 
@@ -175,4 +187,8 @@ a[data-view = "profile"]:link {
   .view-profile-bio {
     margin-top: 1.5rem;
   }
+
+  div.user-view div:last-child {
+  margin-bottom: 0;
+}
 }
