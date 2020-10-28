@@ -142,7 +142,7 @@ h1 {
   padding: 0.5rem 0
 }
 
-a[data-view = "profile"] {
+a[data-view = "profile"], a[data-view = "entries"] {
   display: inline;
   margin-left: 1.5rem;
   margin-top: 3rem;
@@ -151,11 +151,11 @@ a[data-view = "profile"] {
   text-decoration: none;
 }
 
-a[data-view = "profile"]:link {
+a[data-view = "profile"]:link, a[data-view = "entries"]:link {
   color: white;
 }
 
-a[data-view = "profile"]:visited {
+a[data-view = "profile"]:visited, a[data-view = "entries"]:visited {
   color: white;
 }
 
