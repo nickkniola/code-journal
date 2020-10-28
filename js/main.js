@@ -97,8 +97,13 @@ var editProfileDiv = document.querySelector('div[data-view = "edit-profile"]');
 
 var profileDiv = document.querySelector('div[data-view = "profile"]');
 
+
 function viewSwapper(view) {
   if (view === 'profile') {
+    var containerDiv = document.querySelector('div[data-view = "profile"] div.container');
+    if (containerDiv) {
+      containerDiv.remove();
+    }
     editProfileDiv.setAttribute('class', 'display-none');
     profileDiv.setAttribute('class', 'display-block');
     data.view = 'profile';
@@ -107,6 +112,9 @@ function viewSwapper(view) {
     editProfileDiv.setAttribute('class', 'display-block');
     profileDiv.setAttribute('class', 'display-none');
     data.view = 'edit-profile';
+    if (data.profile.avatarUrl) {
+      prepopulateForm();
+    }
   }
 }
 
@@ -117,3 +125,12 @@ document.addEventListener('DOMContentLoaded', function () {
     viewSwapper('edit-profile');
   }
 })
+
+function prepopulateForm() {
+  avatarImage.setAttribute('src', data.profile.avatarUrl);
+  profileForm.elements.avatarUrl.value = data.profile.avatarUrl;
+  profileForm.elements.username.value = data.profile.username;
+  profileForm.elements.fullName.value = data.profile.fullName;
+  profileForm.elements.location.value = data.profile.location;
+  profileForm.elements.bio.value = data.profile.bio;
+}
