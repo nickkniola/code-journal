@@ -27,6 +27,7 @@ h1, h2, h4 {
 
 .view-user-id, .view-location {
   font-size: 20px;
+  margin: 1rem 0 0 0;
 }
 
 .display-none {
@@ -102,12 +103,31 @@ h1, h2, h4 {
   border: 1px solid black;
 }
 
+div.user-view div:last-child {
+  margin-bottom: 2rem;
+}
+
 .profile-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
   border: 1px black solid;
+}
+
+a[data-view = "edit-profile"]:link {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  border: solid 1px black;
+  padding: 0.2rem 0.5rem;
+  box-shadow: 3px 3px 2px black;
+  margin-bottom: 1rem;
+}
+
+a[data-view = "edit-profile"]:visited {
+  color: black;
 }
 
 @media screen and (min-width: 768px) {

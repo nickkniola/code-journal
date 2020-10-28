@@ -75,7 +75,6 @@ function renderProfile(data) {
   icon.setAttribute('class', 'fas fa-user');
   h4Element.prepend(icon);
 
-
   var h4Element2 = document.createElement('h4');
   h4Element2.setAttribute('class', 'view-location');
   h4Element2.textContent = ' ' + data.profile.location;
@@ -84,11 +83,16 @@ function renderProfile(data) {
   icon2.setAttribute('class', 'fas fa-map-marker-alt');
   h4Element2.prepend(icon2);
 
-
   var pElement = document.createElement('p');
   pElement.setAttribute('class', 'view-profile-bio');
   pElement.textContent = data.profile.bio;
-  columnHalfDiv2.append(pElement);
+  columnHalfDiv2.appendChild(pElement);
+
+  var aElement = document.createElement('a');
+  aElement.setAttribute('href', '#');
+  aElement.setAttribute('data-view', 'edit-profile');
+  aElement.textContent = 'EDIT PROFILE';
+  columnHalfDiv2.appendChild(aElement);
 
   return containerDiv;
 }
