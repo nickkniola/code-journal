@@ -146,4 +146,7 @@ document.addEventListener('click', function (event) {
   if (event.target.matches('a[data-view = "edit-profile"]')) {
     viewSwapper('edit-profile');
   }
+  if (event.target.matches('a[data-view = "profile"]')) {
+    viewSwapper('profile');
+  }
 })
