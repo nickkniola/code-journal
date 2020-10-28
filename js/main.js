@@ -69,19 +69,21 @@ function renderProfile(data) {
 
   var h4Element = document.createElement('h4');
   h4Element.setAttribute('class', 'view-user-id');
+  h4Element.textContent = ' ' + data.profile.username;
+  columnHalfDiv2.appendChild(h4Element);
   var icon = document.createElement('i');
   icon.setAttribute('class', 'fas fa-user');
-  h4Element.appendChild(icon);
-  h4Element.textContent = data.profile.username;
-  columnHalfDiv2.appendChild(h4Element);
+  h4Element.prepend(icon);
+
 
   var h4Element2 = document.createElement('h4');
   h4Element2.setAttribute('class', 'view-location');
+  h4Element2.textContent = ' ' + data.profile.location;
+  columnHalfDiv2.append(h4Element2);
   var icon2 = document.createElement('i');
   icon2.setAttribute('class', 'fas fa-map-marker-alt');
-  h4Element2.appendChild(icon2);
-  h4Element2.textContent = data.profile.location;
-  columnHalfDiv2.append(h4Element2);
+  h4Element2.prepend(icon2);
+
 
   var pElement = document.createElement('p');
   pElement.setAttribute('class', 'view-profile-bio');
