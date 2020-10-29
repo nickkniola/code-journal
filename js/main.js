@@ -155,7 +155,8 @@ document.addEventListener('DOMContentLoaded', function () {
     viewSwapper('edit-profile');
   }
 
-  renderEntry();
+
+  renderAllEntries();
 })
 
 function prepopulateForm() {
@@ -196,44 +197,51 @@ newEntryForm.addEventListener('submit', function (event) {
   photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   newEntryForm.reset();
   viewSwapper('entries');
-  renderEntry();
+
+  renderOneEntry()
 });
 
 var olEntries = document.querySelector('ol');
 
-function renderEntry() {
+function renderEntry(entry) {
+  var li = document.createElement('li');
+
+  var row = document.createElement('div');
+  row.setAttribute('class', 'row new-entry');
+  li.appendChild(row);
+
+  var col = document.createElement('div');
+  col.setAttribute('class', 'column-half');
+  row.appendChild(col);
+
+  var img = document.createElement('img');
+  img.setAttribute('src', entry.url);
+  img.setAttribute('alt', entry.title);
+  img.setAttribute('class', 'entry-image');
+  col.appendChild(img);
+
+  col2 = document.createElement('div');
+  col2.setAttribute('class', 'column-half');
+  row.appendChild(col2);
+
+  h4Element = document.createElement('h4');
+  h4Element.setAttribute('class', 'entry-header');
+  h4Element.textContent = entry.title;
+  col2.appendChild(h4Element);
+
+  pElement = document.createElement('p');
+  pElement.textContent = entry.notes;
+  col2.appendChild(pElement);
+
+  olEntries.appendChild(li);
+}
+
+function renderAllEntries() {
   for (var i = 0; i < data.entries.length; i++) {
-    var entry = data.entries[i];
-
-    var li = document.createElement('li');
-
-    var row = document.createElement('div');
-    row.setAttribute('class', 'row new-entry');
-    li.appendChild(row);
-
-    var col = document.createElement('div');
-    col.setAttribute('class', 'column-half');
-    row.appendChild(col);
-
-    var img = document.createElement('img');
-    img.setAttribute('src', entry.url);
-    img.setAttribute('alt', entry.title);
-    img.setAttribute('class', 'entry-image');
-    col.appendChild(img);
-
-    col2 = document.createElement('div');
-    col2.setAttribute('class', 'column-half');
-    row.appendChild(col2);
-
-    h4Element = document.createElement('h4');
-    h4Element.setAttribute('class', 'entry-header');
-    h4Element.textContent = entry.title;
-    col2.appendChild(h4Element);
-
-    pElement = document.createElement('p');
-    pElement.textContent = entry.notes;
-    col2.appendChild(pElement);
-
-    olEntries.appendChild(li);
+    renderEntry(data.entries[i]);
   }
+}
+
+function renderOneEntry() {
+  renderEntry(data.entries[data.entries.length - 1]);
 }
