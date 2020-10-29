@@ -123,7 +123,7 @@ p.view-profile-bio {
   margin-bottom: 1.5rem;
 }
 
-a[data-view = "edit-profile"]:link {
+a[data-view = "edit-profile"]:link, a[data-view="create-entry"]:link {
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
   text-decoration: none;
@@ -133,7 +133,7 @@ a[data-view = "edit-profile"]:link {
   box-shadow: 3px 3px 2px black;
 }
 
-a[data-view = "edit-profile"]:visited {
+a[data-view = "edit-profile"]:visited, a[data-view="create-entry"]:visited {
   color: black;
 }
 
@@ -142,7 +142,19 @@ h1 {
   padding: 0.5rem 0
 }
 
-a[data-view = "profile"], a[data-view = "entries"] {
+.column-full.entries {
+  margin-top: 2rem;
+}
+
+.entries-header {
+  display: inline-block;
+}
+
+.entries-header {
+  margin: 0;
+}
+
+a[data-view="profile"], a[data-view="entries"] {
   display: inline;
   margin-left: 1.5rem;
   margin-top: 3rem;
@@ -151,12 +163,18 @@ a[data-view = "profile"], a[data-view = "entries"] {
   text-decoration: none;
 }
 
-a[data-view = "profile"]:link, a[data-view = "entries"]:link {
+a[data-view="profile"]:link, a[data-view="entries"]:link {
   color: white;
 }
 
-a[data-view = "profile"]:visited, a[data-view = "entries"]:visited {
+a[data-view="profile"]:visited, a[data-view="entries"]:visited {
   color: white;
+}
+
+a[data-view="create-entry"] {
+  float: right;
+  justify-self: center;
+  align-self: center;
 }
 
 @media screen and (min-width: 768px) {
