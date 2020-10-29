@@ -196,17 +196,14 @@ newEntryForm.addEventListener('submit', function (event) {
   photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   newEntryForm.reset();
   viewSwapper('entries');
+  renderEntry();
 });
 
 var olEntries = document.querySelector('ol');
 
 function renderEntry() {
- //get first element object: data.entries[0] / .url .title .notes
-  //loop through the data.entries array'
   for (var i = 0; i < data.entries.length; i++) {
     var entry = data.entries[i];
-
-    // get each element and return as li
 
     var li = document.createElement('li');
 
