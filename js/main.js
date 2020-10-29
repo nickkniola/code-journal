@@ -21,6 +21,16 @@ profileForm.addEventListener('submit', function (event) {
   viewSwapper('profile');
 });
 
+var photoInput = document.querySelector('.entry-input.url');
+var photoUrl = document.querySelector('.new-entry-image');
+photoInput.addEventListener('input', function () {
+  photoUrl.setAttribute('src', photoInput.value);
+})
+
+var newEntryForm = document.querySelector('.new-entry-form');
+
+
+
 var previousProfileData = localStorage.getItem('profileData');
 
 if (previousProfileData) {
