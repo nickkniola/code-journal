@@ -88,26 +88,43 @@
         </div>
       </div>
     </div>
-    <div data-view="create-entry">
+    <div data-view="create-entry" class="display-none">
       <div class="container">
-        <div class="row">
-          <div class="column-full">
-            <h2>New Entry</h2>
+        <form class="new-entry-form">
+          <div class="row">
+            <div class="column-full">
+              <h2>New Entry</h2>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="column-half">
-
+          <div class="row">
+            <div class="column-half">
+              <img src="images/placeholder-image-square.jpg" alt="placeholder image" class="placeholder-image">
+            </div>
+            <div class="column-half">
+              <div class="new-entry url">
+                <label for="image-url">Image URL</label>
+                <br/>
+                <input type="url" class="entry-input" id="image-url" name="imageUrl" required>
+              </div>
+              <div class="new-entry title">
+                <label for="title">Title</label>
+                <br/>
+                <input type="text" class="entry-input" id="title" name="title" required>
+              </div>
+            </div>
           </div>
-          <div class="column-half">
-
+          <div class="row">
+            <div class="column-full">
+              <div class="new-entry notes">
+                <label for="notes">Notes</label>
+                <br/>
+                <textarea class="notes-text-area" id="notes" name="notes" required></textarea>
+                <br/>
+                <button type="submit" class="save-button" form="new-entry-form" value="save">SAVE</button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="column-full">
-
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </main>
