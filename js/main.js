@@ -22,14 +22,10 @@ profileForm.addEventListener('submit', function (event) {
 });
 
 var photoInput = document.querySelector('.entry-input.url');
-var photoUrl = document.querySelector('.new-entry-image');
+var photo = document.querySelector('.new-entry-image');
 photoInput.addEventListener('input', function () {
-  photoUrl.setAttribute('src', photoInput.value);
-})
-
-var newEntryForm = document.querySelector('.new-entry-form');
-
-
+  photo.setAttribute('src', photoInput.value);
+});
 
 var previousProfileData = localStorage.getItem('profileData');
 
@@ -179,3 +175,20 @@ document.addEventListener('click', function (event) {
     viewSwapper('create-entry');
   }
 })
+
+var newEntryForm = document.querySelector('.new-entry-form');
+
+newEntryForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  console.log('test')
+  var entryObject = {};
+  entryObject.url = newEntryForm.elements.photoUrl.value;
+  entryObject.title = newEntryForm.elements.title.value;
+  entryObject.notes = newEntryForm.elements.notes.value;
+  data.entries.push(entryObject);
+
+  photo.setAttribute('src', 'images/placeholder-image-square.jpg');
+  newEntryForm.reset();
+  viewSwapper('entries');
+});
