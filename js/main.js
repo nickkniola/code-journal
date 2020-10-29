@@ -154,6 +154,8 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     viewSwapper('edit-profile');
   }
+
+  renderEntry();
 })
 
 function prepopulateForm() {
@@ -196,38 +198,45 @@ newEntryForm.addEventListener('submit', function (event) {
   viewSwapper('entries');
 });
 
+var olEntries = document.querySelector('ol');
+
 function renderEntry() {
  //get first element object: data.entries[0] / .url .title .notes
-  var entry = data.entries[0];
+  //loop through the data.entries array'
+  for (var i = 0; i < data.entries.length; i++) {
+    var entry = data.entries[i];
 
-  var li = document.createElement('li');
+    // get each element and return as li
 
-  var row = document.createElement('div');
-  row.setAttribute('class', 'row new-entry');
-  li.appendChild(row);
+    var li = document.createElement('li');
 
-  var col = document.createElement('div');
-  col.setAttribute('class', 'column-half');
-  row.appendChild(col);
+    var row = document.createElement('div');
+    row.setAttribute('class', 'row new-entry');
+    li.appendChild(row);
 
-  var img = document.createElement('img');
-  img.setAttribute('src', entry.url);
-  img.setAttribute('alt', entry.title);
-  img.setAttribute('class', 'entry-image');
-  col.appendChild(img);
+    var col = document.createElement('div');
+    col.setAttribute('class', 'column-half');
+    row.appendChild(col);
 
-  col2 = document.createElement('div');
-  col2.setAttribute('class', 'column-half');
-  row.appendChild(col2);
+    var img = document.createElement('img');
+    img.setAttribute('src', entry.url);
+    img.setAttribute('alt', entry.title);
+    img.setAttribute('class', 'entry-image');
+    col.appendChild(img);
 
-  h4Element = document.createElement('h4');
-  h4Element.setAttribute('class', 'entry-header');
-  h4Element.textContent = entry.title;
-  col2.appendChild(h4Element);
+    col2 = document.createElement('div');
+    col2.setAttribute('class', 'column-half');
+    row.appendChild(col2);
 
-  pElement = document.createElement('p');
-  pElement.textContent = entry.notes;
-  col2.appendChild(pElement);
+    h4Element = document.createElement('h4');
+    h4Element.setAttribute('class', 'entry-header');
+    h4Element.textContent = entry.title;
+    col2.appendChild(h4Element);
 
-  return li;
+    pElement = document.createElement('p');
+    pElement.textContent = entry.notes;
+    col2.appendChild(pElement);
+
+    olEntries.appendChild(li);
+  }
 }
