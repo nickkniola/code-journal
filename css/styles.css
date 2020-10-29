@@ -13,7 +13,7 @@ h1, h2, h4 {
   font-family: 'Roboto', sans-serif;
 }
 
-.profile-form, .profile-bio-section, .view-profile-bio {
+.profile-form, .profile-bio-section, .view-profile-bio, .new-entry-form {
   font-family: 'Nunito', sans-serif;
 }
 
@@ -47,6 +47,10 @@ h1, h2, h4 {
   margin: 0;
 }
 
+img {
+  max-height: 400px;
+}
+
 .placeholder-image {
   width: 100%;
   height: 100%;
@@ -61,27 +65,27 @@ h1, h2, h4 {
   justify-content: space-between;
 }
 
-.profile-form-input {
+.profile-form-input, div.new-entry {
   margin-top: 1rem;
 }
 
-.profile-form-input input {
+.profile-form-input input, .new-entry-form input {
   width: 100%;
   height: 2.5rem;
   margin-top: 0.5rem;
   border: 1px solid black;
 }
 
-.profile-input {
+.profile-input, .entry-input {
   font-size: 18px;
   font-family: 'Nunito', sans-serif;
 }
 
-.profile-bio-section {
+.profile-bio-section, .new-entry-notes {
   margin-top: 1rem;
 }
 
-.bio-text-area {
+.bio-text-area, .notes-text-area {
   width: 100%;
   height: 6rem;
   margin-top: 0.5rem;
@@ -104,8 +108,6 @@ h1, h2, h4 {
   background-color: white;
 }
 
-
-
 div.user-view div:last-child {
   margin-bottom: 2rem;
   height: 100%;
@@ -123,7 +125,7 @@ p.view-profile-bio {
   margin-bottom: 1.5rem;
 }
 
-a[data-view = "edit-profile"]:link {
+a[data-view = "edit-profile"]:link, a[data-view="create-entry"]:link {
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
   text-decoration: none;
@@ -133,7 +135,7 @@ a[data-view = "edit-profile"]:link {
   box-shadow: 3px 3px 2px black;
 }
 
-a[data-view = "edit-profile"]:visited {
+a[data-view = "edit-profile"]:visited, a[data-view="create-entry"]:visited {
   color: black;
 }
 
@@ -142,7 +144,19 @@ h1 {
   padding: 0.5rem 0
 }
 
-a[data-view = "profile"] {
+.column-full.entries {
+  margin-top: 2rem;
+}
+
+.entries-header {
+  display: inline-block;
+}
+
+.entries-header {
+  margin: 0;
+}
+
+a[data-view="profile"], a[data-view="entries"] {
   display: inline;
   margin-left: 1.5rem;
   margin-top: 3rem;
@@ -151,24 +165,25 @@ a[data-view = "profile"] {
   text-decoration: none;
 }
 
-a[data-view = "profile"]:link {
+a[data-view="profile"]:link, a[data-view="entries"]:link {
   color: white;
 }
 
-a[data-view = "profile"]:visited {
+a[data-view="profile"]:visited, a[data-view="entries"]:visited {
   color: white;
 }
 
-@media screen and (min-width: 768px) {
-  .placeholder-image {
+a[data-view="create-entry"] {
+  float: right;
+}
+
+.placeholder-image, img {
     min-height: 400px;
   }
 
-  .profile-form {
-    min-height: 406px;
-  }
+@media screen and (min-width: 768px) {
 
-  .profile-form-input {
+  .profile-form-input, .new-entry.url {
     margin-top: 0rem;
   }
 
@@ -176,7 +191,7 @@ a[data-view = "profile"]:visited {
     margin-top: 0.8rem;
   }
 
-  .profile-bio-section {
+  .profile-bio-section, .new-entry.notes {
     margin-top: 3rem;
   }
 
