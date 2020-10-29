@@ -233,15 +233,15 @@ function renderEntry(entry) {
   pElement.textContent = entry.notes;
   col2.appendChild(pElement);
 
-  olEntries.appendChild(li);
+  return li;
 }
 
 function renderAllEntries() {
   for (var i = 0; i < data.entries.length; i++) {
-    renderEntry(data.entries[i]);
+    olEntries.appendChild(renderEntry(data.entries[i]));
   }
 }
 
 function renderOneEntry() {
-  renderEntry(data.entries[data.entries.length - 1]);
+  olEntries.appendChild(renderEntry(data.entries[data.entries.length - 1]));
 }
