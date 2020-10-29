@@ -34,6 +34,10 @@ if (previousProfileData) {
 }
 
 window.addEventListener('beforeunload', function () {
+  if (!data.profile.username) {
+    return;
+  }
+
   var dataString = JSON.stringify(data);
   localStorage.setItem('profileData', dataString);
 });
@@ -181,7 +185,6 @@ var newEntryForm = document.querySelector('.new-entry-form');
 newEntryForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  console.log('test')
   var entryObject = {};
   entryObject.url = newEntryForm.elements.photoUrl.value;
   entryObject.title = newEntryForm.elements.title.value;
