@@ -42,7 +42,7 @@ window.addEventListener('beforeunload', function () {
   localStorage.setItem('profileData', dataString);
 });
 
-function renderProfile(data) {
+function renderProfile() {
   var containerDiv = document.createElement('div');
   containerDiv.setAttribute('class', 'container');
 
@@ -123,7 +123,7 @@ function viewSwapper(view) {
     entriesDiv.setAttribute('class', 'display-none');
     createEntryDiv.setAttribute('class', 'display-none');
     data.view = 'profile';
-    profileDiv.appendChild(renderProfile(data));
+    profileDiv.appendChild(renderProfile());
   } else if (view === 'edit-profile') {
     editProfileDiv.setAttribute('class', 'display-block');
     entriesDiv.setAttribute('class', 'display-none');
@@ -154,6 +154,9 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     viewSwapper('edit-profile');
   }
+
+
+  renderAllEntries();
 })
 
 function prepopulateForm() {
@@ -194,4 +197,51 @@ newEntryForm.addEventListener('submit', function (event) {
   photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   newEntryForm.reset();
   viewSwapper('entries');
+
+  renderOneEntry()
 });
+
+var olEntries = document.querySelector('ol');
+
+function renderEntry(entry) {
+  var li = document.createElement('li');
+
+  var row = document.createElement('div');
+  row.setAttribute('class', 'row new-entry');
+  li.appendChild(row);
+
+  var col = document.createElement('div');
+  col.setAttribute('class', 'column-half');
+  row.appendChild(col);
+
+  var img = document.createElement('img');
+  img.setAttribute('src', entry.url);
+  img.setAttribute('alt', entry.title);
+  img.setAttribute('class', 'entry-image');
+  col.appendChild(img);
+
+  col2 = document.createElement('div');
+  col2.setAttribute('class', 'column-half');
+  row.appendChild(col2);
+
+  h4Element = document.createElement('h4');
+  h4Element.setAttribute('class', 'entry-header');
+  h4Element.textContent = entry.title;
+  col2.appendChild(h4Element);
+
+  pElement = document.createElement('p');
+  pElement.textContent = entry.notes;
+  col2.appendChild(pElement);
+
+  return li;
+}
+
+function renderAllEntries() {
+  for (var i = 0; i < data.entries.length; i++) {
+    olEntries.appendChild(renderEntry(data.entries[i]));
+  }
+}
+
+function renderOneEntry() {
+  olEntries.appendChild(renderEntry(data.entries[data.entries.length - 1]));
+}
