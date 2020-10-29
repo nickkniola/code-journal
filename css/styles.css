@@ -108,8 +108,6 @@ img {
   background-color: white;
 }
 
-
-
 div.user-view div:last-child {
   margin-bottom: 2rem;
   height: 100%;
@@ -177,8 +175,6 @@ a[data-view="profile"]:visited, a[data-view="entries"]:visited {
 
 a[data-view="create-entry"] {
   float: right;
-  justify-self: center;
-  align-self: center;
 }
 
 .placeholder-image, img {
@@ -186,10 +182,6 @@ a[data-view="create-entry"] {
   }
 
 @media screen and (min-width: 768px) {
-
-  .profile-form {
-    min-height: 400px;
-  }
 
   .profile-form-input, .new-entry.url {
     margin-top: 0rem;
