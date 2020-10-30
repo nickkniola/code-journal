@@ -181,6 +181,12 @@ document.addEventListener('click', function (event) {
   } else if (event.target.matches('a[data-view="create-entry"]') && data.profile.username) {
     viewSwapper('create-entry');
   }
+
+  if (event.target.matches('a[data-view="delete-entry"]')) {
+    var deleteLink = document.querySelectorAll('a.delete-link');
+    var orderedList = document.querySelector('ol');
+    orderedList.removeChild(event.target.closest('li'));
+  }
 })
 
 var newEntryForm = document.querySelector('.new-entry-form');
@@ -236,6 +242,7 @@ function renderEntry(entry) {
   deleteLink = document.createElement('a');
   deleteLink.setAttribute('href', '#');
   deleteLink.setAttribute('class', 'delete-link');
+  deleteLink.setAttribute('data-view', 'delete-entry');
   deleteLink.textContent = 'DELETE';
   col2.appendChild(deleteLink);
 
@@ -250,4 +257,11 @@ function renderAllEntries() {
 
 function renderOneEntry() {
   olEntries.appendChild(renderEntry(data.entries[data.entries.length - 1]));
+}
+
+
+// var test = deleteLink.closest(".row.new-entry")
+function deleteEntry() {
+
+
 }
