@@ -126,7 +126,7 @@ p.view-profile-bio {
   margin-bottom: 1.5rem;
 }
 
-a[data-view = "edit-profile"]:link, a[data-view="create-entry"]:link {
+a[data-view = "edit-profile"]:link, a[data-view="create-entry"]:link, .delete-link {
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
   text-decoration: none;

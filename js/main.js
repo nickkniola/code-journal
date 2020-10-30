@@ -233,6 +233,12 @@ function renderEntry(entry) {
   pElement.textContent = entry.notes;
   col2.appendChild(pElement);
 
+  deleteLink = document.createElement('a');
+  deleteLink.setAttribute('href', '#');
+  deleteLink.setAttribute('class', 'delete-link');
+  deleteLink.textContent = 'DELETE';
+  col2.appendChild(deleteLink);
+
   return li;
 }
 
