@@ -168,6 +168,8 @@ function prepopulateForm() {
   profileForm.elements.bio.value = data.profile.bio;
 }
 
+// document.querySelector('p').textContent
+
 document.addEventListener('click', function (event) {
   if (!event.target.matches('a')) {
     return;
@@ -183,9 +185,21 @@ document.addEventListener('click', function (event) {
   }
 
   if (event.target.matches('a[data-view="delete-entry"]')) {
-    var deleteLink = document.querySelectorAll('a.delete-link');
     var orderedList = document.querySelector('ol');
     orderedList.removeChild(event.target.closest('li'));
+    // somehow relate closest list element with data.entries at a specific index
+    // if paragraph of event target matches data.entries[i]., use splice to remove entry at that index
+    for (var i = 0; i < data.entries.length; i++) {
+      console.log('notes', data.entries[i].notes);
+      console.log('textcontent', event.target.previousSibling.textContent);
+      if (event.target.previousSibling.textContent === data.entries[i].notes) {
+        data.entries.splice(i, 1);
+        console.log('test');
+      }
+    }
+
+    var dataString = JSON.stringify(data);
+    localStorage.setItem('profileData', dataString);
   }
 })
 
@@ -239,7 +253,7 @@ function renderEntry(entry) {
   pElement.textContent = entry.notes;
   col2.appendChild(pElement);
 
-  deleteLink = document.createElement('a');
+  var deleteLink = document.createElement('a');
   deleteLink.setAttribute('href', '#');
   deleteLink.setAttribute('class', 'delete-link');
   deleteLink.setAttribute('data-view', 'delete-entry');
@@ -262,6 +276,6 @@ function renderOneEntry() {
 
 // var test = deleteLink.closest(".row.new-entry")
 function deleteEntry() {
-
+  localStorage.removeItem()
 
 }
