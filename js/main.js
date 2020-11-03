@@ -154,8 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     viewSwapper('edit-profile');
   }
-
-
   renderAllEntries();
 })
 
@@ -167,8 +165,6 @@ function prepopulateForm() {
   profileForm.elements.location.value = data.profile.location;
   profileForm.elements.bio.value = data.profile.bio;
 }
-
-// document.querySelector('p').textContent
 
 document.addEventListener('click', function (event) {
   if (!event.target.matches('a')) {
@@ -187,14 +183,10 @@ document.addEventListener('click', function (event) {
   if (event.target.matches('a[data-view="delete-entry"]')) {
     var orderedList = document.querySelector('ol');
     orderedList.removeChild(event.target.closest('li'));
-    // somehow relate closest list element with data.entries at a specific index
-    // if paragraph of event target matches data.entries[i]., use splice to remove entry at that index
+    // remove specific entry to delete from localStorage
     for (var i = 0; i < data.entries.length; i++) {
-      console.log('notes', data.entries[i].notes);
-      console.log('textcontent', event.target.previousSibling.textContent);
       if (event.target.previousSibling.textContent === data.entries[i].notes) {
         data.entries.splice(i, 1);
-        console.log('test');
       }
     }
 
@@ -220,8 +212,6 @@ newEntryForm.addEventListener('submit', function (event) {
 
   renderOneEntry()
 });
-
-var olEntries = document.querySelector('ol');
 
 function renderEntry(entry) {
   var li = document.createElement('li');
@@ -263,6 +253,8 @@ function renderEntry(entry) {
   return li;
 }
 
+var olEntries = document.querySelector('ol');
+
 function renderAllEntries() {
   for (var i = 0; i < data.entries.length; i++) {
     olEntries.appendChild(renderEntry(data.entries[i]));
@@ -271,11 +263,4 @@ function renderAllEntries() {
 
 function renderOneEntry() {
   olEntries.appendChild(renderEntry(data.entries[data.entries.length - 1]));
-}
-
-
-// var test = deleteLink.closest(".row.new-entry")
-function deleteEntry() {
-  localStorage.removeItem()
-
 }

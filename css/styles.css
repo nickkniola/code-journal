@@ -136,6 +136,11 @@ a[data-view = "edit-profile"]:link, a[data-view="create-entry"]:link, .delete-li
   box-shadow: 3px 3px 2px black;
 }
 
+.delete-link {
+  color: white;
+  background-color: darkred;
+}
+
 a[data-view = "edit-profile"]:visited, a[data-view="create-entry"]:visited {
   color: black;
 }
