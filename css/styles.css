@@ -126,7 +126,7 @@ p.view-profile-bio {
   margin-bottom: 1.5rem;
 }
 
-a[data-view = "edit-profile"]:link, a[data-view="create-entry"]:link {
+a[data-view = "edit-profile"]:link, a[data-view="create-entry"]:link, .delete-link {
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
   text-decoration: none;
@@ -134,6 +134,11 @@ a[data-view = "edit-profile"]:link, a[data-view="create-entry"]:link {
   border: solid 1px black;
   padding: 0.2rem 0.5rem;
   box-shadow: 3px 3px 2px black;
+}
+
+.delete-link {
+  color: white;
+  background-color: darkred;
 }
 
 a[data-view = "edit-profile"]:visited, a[data-view="create-entry"]:visited {

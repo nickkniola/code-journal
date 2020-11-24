@@ -154,8 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     viewSwapper('edit-profile');
   }
-
-
   renderAllEntries();
 })
 
@@ -181,6 +179,20 @@ document.addEventListener('click', function (event) {
   } else if (event.target.matches('a[data-view="create-entry"]') && data.profile.username) {
     viewSwapper('create-entry');
   }
+
+  if (event.target.matches('a[data-view="delete-entry"]')) {
+    var orderedList = document.querySelector('ol');
+    orderedList.removeChild(event.target.closest('li'));
+    // remove specific entry to delete from localStorage
+    for (var i = 0; i < data.entries.length; i++) {
+      if (event.target.previousSibling.textContent === data.entries[i].notes) {
+        data.entries.splice(i, 1);
+      }
+    }
+
+    var dataString = JSON.stringify(data);
+    localStorage.setItem('profileData', dataString);
+  }
 })
 
 var newEntryForm = document.querySelector('.new-entry-form');
@@ -200,8 +212,6 @@ newEntryForm.addEventListener('submit', function (event) {
 
   renderOneEntry()
 });
-
-var olEntries = document.querySelector('ol');
 
 function renderEntry(entry) {
   var li = document.createElement('li');
@@ -233,8 +243,17 @@ function renderEntry(entry) {
   pElement.textContent = entry.notes;
   col2.appendChild(pElement);
 
+  var deleteLink = document.createElement('a');
+  deleteLink.setAttribute('href', '#');
+  deleteLink.setAttribute('class', 'delete-link');
+  deleteLink.setAttribute('data-view', 'delete-entry');
+  deleteLink.textContent = 'DELETE';
+  col2.appendChild(deleteLink);
+
   return li;
 }
+
+var olEntries = document.querySelector('ol');
 
 function renderAllEntries() {
   for (var i = 0; i < data.entries.length; i++) {
