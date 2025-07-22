@@ -29,7 +29,7 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-standard": "4.0.1",
-    "htmlhint": "0.14.1",
+    "htmlhint": "1.6.3",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
     "stylelint": "13.6.1",
